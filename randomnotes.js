@@ -3,6 +3,7 @@ const { Client } = require('pg');
 const path = require('path');
 const express = require('express');
 const app = express();
+const http = require('http');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 
@@ -22,7 +23,6 @@ app.post('/', (req, res) => {
 	res.redirect('back');
 	});
 
-// https://randomnotes.herokuapp.com
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
 const client = new Client({
@@ -51,3 +51,6 @@ let getNote = (res) => {
 		})
 		.catch(err => console.error(err));
 }
+
+// prevent heroku app from zzz...send request every 5 minutes
+setInterval(() => http.get('https://randomnotes.herokuapp.com'), 1000 * 60 * 5);

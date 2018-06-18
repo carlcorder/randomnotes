@@ -1,5 +1,12 @@
 doctype html
-h1 randomnotes
-textarea#randomnotes(name='content' form='randomnotes-form' placeholder='random notes go here..')=note
-form#randomnotes-form(action='/' method='post')
-  input(type='submit' value='Save')
+head
+  meta(charset='UTF-8')
+  link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
+  link(rel='stylesheet' type='text/css' href='/themes/sketchy.min.css')
+  link(rel='stylesheet' type='text/css' href='/randomnotes.css')
+  title randomnotes
+.randomnotes-wrap
+  h1 randomnotes
+  textarea#randomnotes(name='content' form='randomnotes-form' placeholder='random notes go here..')=note
+  form#randomnotes-form(action='/' method='post')
+    input(type='submit' value='Save')

@@ -1,26 +1,29 @@
 const { DATABASE_URL } = require('./config.json');
 const { Client } = require('pg');
-
+const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-// app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.set('views', path.join(__dirname, './views'));
+app.use(express.static(path.join(__dirname, './public')));
 app.set('view engine', 'pug');
+
 app.get('/', (req, res) => {
+	console.log('request made')
 	getNote(res);
 });
 
 app.post('/', (req, res) => {
-	let randomnotes = req.body.content;
-	console.log(randomnotes);
-	insertNote(randomnotes);
+	insertNote(req.body.content);
 	res.redirect('back');
 	});
 
+// https://randomnotes.herokuapp.com
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
 
 const client = new Client({
@@ -44,6 +47,7 @@ let getNote = (res) => {
 	client.query(`SELECT content FROM notes ORDER BY id DESC LIMIT 1;`)
 		.then(result => {
 			let note = result.rows[0];
+			console.log(note);
 			note ? res.render('index', {note: note['content']}) : res.render('index');
 		})
 		.catch(err => console.error(err));

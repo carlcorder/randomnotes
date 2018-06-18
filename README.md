@@ -2,4 +2,4 @@
 
 ![demo](https://raw.githubusercontent.com/carlcorder/randomnotes/master/img/randomnotes.png)
 
-> Every developer needs a personal place to store and transfer notes across multiple machines.
+> ![favicon](https://raw.githubusercontent.com/carlcorder/randomnotes/master/img/randomnotes.gif) Every developer needs a personal place to store and transfer notes across multiple machines.

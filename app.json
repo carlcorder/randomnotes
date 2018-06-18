@@ -1,0 +1,8 @@
+{
+  "name": "randomnotes",
+  "description": "A simple notes App that's ready for Heroku",
+  "repository": "https://github.com/carlcorder/randomnotes",
+  "logo": "https://raw.githubusercontent.com/carlcorder/randomnotes/master/img/randomnotes-logo.png",
+  "keywords": ["node", "express", "postgres", "heroku", "notes"],
+  "addons": ["heroku-postgresql"]
+}

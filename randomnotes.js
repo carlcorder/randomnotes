@@ -53,4 +53,4 @@ let getNote = (res) => {
 }
 
 // prevent heroku app from zzz...send request every 5 minutes
-setInterval(() => http.get('https://randomnotes.herokuapp.com'), 1000 * 60 * 5);
+setInterval(() => https.get('https://randomnotes.herokuapp.com'), 1000 * 60 * 5);

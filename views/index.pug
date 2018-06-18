@@ -1,0 +1,5 @@
+doctype html
+h1 randomnotes
+textarea#randomnotes(name='content' form='randomnotes-form' placeholder='random notes go here..')=note
+form#randomnotes-form(action='/' method='post')
+  input(type='submit' value='Save')

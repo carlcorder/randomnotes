@@ -10,3 +10,10 @@ head
   textarea#randomnotes(name='content' form='randomnotes-form' placeholder='random notes go here..')=note
   form#randomnotes-form(action='/' method='post')
     input(type='submit' value='Save')
+    button#copy-btn(onclick='copy()') Copy
+script(type='text/javascript').
+  let copy = () => {
+  let content = document.getElementById('randomnotes');
+  content.select();
+  document.execCommand("copy");
+  }

@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, './public')));
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
-	console.log('request made')
 	getNote(res);
 });
 
@@ -38,7 +37,7 @@ client.connect().then(() => {
 
 let insertNote = (content) => {
     client.query(`INSERT INTO notes (content) VALUES ('${content}');`, (err, result) => {
-        err ? console.log(err) : console.log(result);
+        err ? console.error(err) : console.log(result);
     });
 }
 
@@ -46,7 +45,6 @@ let getNote = (res) => {
 	client.query(`SELECT content FROM notes ORDER BY id DESC LIMIT 1;`)
 		.then(result => {
 			let note = result.rows[0];
-			console.log(note);
 			note ? res.render('index', {note: note['content']}) : res.render('index');
 		})
 		.catch(err => console.error(err));
